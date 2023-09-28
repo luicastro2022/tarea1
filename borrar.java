@@ -1,2 +1,4 @@
-package PACKAGE_NAME;public class borrar {
+public class borrar {
+    public int numer2 = 3;
+    private int numero = 2;
 }
