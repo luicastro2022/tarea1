@@ -1,9 +1,18 @@
+import java.util.Date;
 
 class OrdenCompra{
+
+    private Date fecha;
+    private String estado;
+
     public void OrdenCompra(){}
 
-    private int Date;
-    private String estado;
+    public int calcPrecioSinIVA(){
+        return 2;
+    }
+    public int calcIVA(){return 2;}
+    public int calcPrecio(){return 2;}
+    public int calcPeso(){return 2;}
 
 }
 
