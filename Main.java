@@ -1,5 +1,24 @@
+
+class OrdenCompra{
+    public void OrdenCompra(){}
+
+    private int Date;
+    private String estado;
+
+}
+
+
+
+
+
+
+
+
+
 public class Main {
-    public int numero=1;
+    public static void main(String[] args){
+
+    }
     
 }
 
