@@ -32,7 +32,12 @@ class Cliente{
     public Cliente(String nombree,String rutt){
         nombre=nombree;
         RUT=rutt;
-
+    }
+    public String getNombre(){
+        return nombre;
+    }
+    public String getRUT(){
+        return RUT;
     }
 }
 class Direccion{
@@ -113,7 +118,9 @@ class Factura extends DocTributario{
 
 public class Main {
     public static void main(String[] args){
-
+    Cliente c1=new Cliente("vicente","21093975k");
+    System.out.println(c1.getNombre());
+    System.out.println(c1.getRUT());
 
     }
     
