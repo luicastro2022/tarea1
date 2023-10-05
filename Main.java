@@ -6,7 +6,8 @@ class OrdenCompra{
 
     private Date fecha;
     private String estado;
-    private ArrayList<Pago> Pagos;
+    private Cliente cliente;
+
     private ArrayList<DocTributario> DocsTributarios;
     private ArrayList<Cliente> Clientes;
 
@@ -25,6 +26,7 @@ class OrdenCompra{
 class Cliente{
     private String nombre;
     private String RUT;
+    private ArrayList<OrdenCompra> OrdenesDeCompra;
 }
 
 
@@ -49,6 +51,7 @@ class Tarjeta extends Pago{
     private String numTransaccion;
 
 }
+
 
 class DocTributario{
     private String numero;
