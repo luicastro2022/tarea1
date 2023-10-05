@@ -1,3 +1,4 @@
+import java.lang.reflect.Array;
 import java.util.Date;
 import java.util.ArrayList;
 
@@ -5,6 +6,9 @@ class OrdenCompra{
 
     private Date fecha;
     private String estado;
+    private ArrayList<Pago> Pagos;
+    private ArrayList<DocTributario> DocsTributarios;
+    private ArrayList<Cliente> Clientes;
 
     public OrdenCompra(){}
 
@@ -16,6 +20,11 @@ class OrdenCompra{
     public int calcPeso(){return 2;}
 
 
+}
+
+class Cliente{
+    private String nombre;
+    private String RUT;
 }
 
 
@@ -45,6 +54,7 @@ class DocTributario{
     private String numero;
     private String RUT;
     private Date fecha;
+    private DocTributario docTributario;
 
     public DocTributario(){}
 }
