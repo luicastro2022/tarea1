@@ -22,12 +22,44 @@ class OrdenCompra{
 
 
 }
-
 class Cliente{
     private String nombre;
     private String RUT;
     private ArrayList<OrdenCompra> OrdenesDeCompra;
 }
+class Direccion{
+    private String direccion;
+    public Direccion(){}
+}
+
+class DetalleOrden {
+    private int cantidad;
+
+    public int CalcPrecio() {
+        return 0;
+    }
+
+    public int CalcPrecioSinIVA() {
+        return 0;
+    }
+
+    public int CalcIVA() {
+        return 0;
+    }
+
+    public int CalcPeso() {
+        return 0;
+    }
+}
+class Articulo{
+    private float peso;
+    private String nombre;
+    private String descripcion;
+    private float precio;
+}
+
+
+
 
 
 
@@ -76,6 +108,7 @@ class Factura extends DocTributario{
 
 public class Main {
     public static void main(String[] args){
+
 
     }
     
