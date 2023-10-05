@@ -17,6 +17,8 @@ class OrdenCompra{
 
 }
 
+
+
 class Pago{
     private float monto;
     private Date fecha;
@@ -36,6 +38,20 @@ class Tarjeta extends Pago{
     private String tipo;
     private String numTransaccion;
 
+}
+
+class DocTributario{
+    private String numero;
+    private String RUT;
+    private Date fecha;
+
+    public DocTributario(){}
+}
+class Boleta extends DocTributario{
+    public Boleta(){}
+}
+class Factura extends DocTributario{
+    public Factura(){}
 }
 
 
