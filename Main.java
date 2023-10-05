@@ -11,7 +11,10 @@ class OrdenCompra{
     private ArrayList<DocTributario> DocsTributarios;
     private ArrayList<Cliente> Clientes;
 
-    public OrdenCompra(){}
+    public OrdenCompra(String estadoo, Cliente clientee){
+        estado=estadoo;
+        cliente=clientee;
+    }
 
     public int calcPrecioSinIVA(){
         return 2;
@@ -26,10 +29,21 @@ class Cliente{
     private String nombre;
     private String RUT;
     private ArrayList<OrdenCompra> OrdenesDeCompra;
+    public Cliente(String nombree,String rutt){
+        nombre=nombree;
+        RUT=rutt;
+
+    }
 }
 class Direccion{
     private String direccion;
-    public Direccion(){}
+    public Direccion(String direccionn){
+        direccion=direccionn;
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
 }
 
 class DetalleOrden {
