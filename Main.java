@@ -59,10 +59,6 @@ class Articulo{
 }
 
 
-
-
-
-
 class Pago{
     private float monto;
     private Date fecha;
@@ -99,11 +95,6 @@ class Boleta extends DocTributario{
 class Factura extends DocTributario{
     public Factura(){}
 }
-
-
-
-
-
 
 
 public class Main {
