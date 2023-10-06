@@ -22,16 +22,17 @@ class OrdenCompra{
     public int calcIVA(){return 2;}
     public int calcPrecio(){return 2;}
     public int calcPeso(){return 2;}
-
-
+    
 }
 class Cliente{
     private String nombre;
     private String RUT;
+    private Direccion direccion;
     private ArrayList<OrdenCompra> OrdenesDeCompra;
-    public Cliente(String nombree,String rutt){
+    public Cliente(String nombree,String rutt,Direccion direccionn){
         nombre=nombree;
         RUT=rutt;
+        direccion=direccionn;
     }
     public String getNombre(){
         return nombre;
@@ -39,9 +40,13 @@ class Cliente{
     public String getRUT(){
         return RUT;
     }
+    public Direccion getDireccion() {
+        return direccion;
+    }
 }
 class Direccion{
     private String direccion;
+    private ArrayList<Cliente> Clientes;
     public Direccion(String direccionn){
         direccion=direccionn;
     }
@@ -118,10 +123,11 @@ class Factura extends DocTributario{
 
 public class Main {
     public static void main(String[] args){
-    Cliente c1=new Cliente("vicente","21093975k");
+    Direccion d1=new Direccion("Lord cochrane");
+    Cliente c1=new Cliente("vicente","21093975k",d1);
     System.out.println(c1.getNombre());
     System.out.println(c1.getRUT());
-
+    System.out.println(c1.getDireccion().getDireccion());
     }
     
 }
