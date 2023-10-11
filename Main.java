@@ -22,7 +22,7 @@ class OrdenCompra{
     public int calcIVA(){return 2;}
     public int calcPrecio(){return 2;}
     public int calcPeso(){return 2;}
-    
+
 }
 class Cliente{
     private String nombre;
