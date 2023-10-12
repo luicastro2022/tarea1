@@ -58,26 +58,30 @@ class Direccion{
 }
 
 class DetalleOrden {
+    private float peso;
+    private float precio;
+    private float precioT;
     private int cantidad;
     private Articulo articulo;
     public DetalleOrden(int cantidadd,Articulo articuloo){
-        cantidad=cantidad;
+        cantidad=cantidadd;
         articulo=articuloo;
-    }
-    public int CalcPrecio() {
-        return 0;
-    }
+        peso=articulo.getPeso();
 
-    public int CalcPrecioSinIVA() {
-        return 0;
+        precio=articuloo.getPrecio();
+        precioT=cantidad*precio;
     }
-
-    public int CalcIVA() {
-        return 0;
+    public float CalcIVA() {
+        return precioT*19/100;
     }
-
-    public int CalcPeso() {
-        return 0;
+    public float CalcPrecio() {
+        return (precio*cantidad)+precioT*19/100;
+    }
+    public float CalcPrecioSinIVA() {
+        return precio*cantidad;
+    }
+    public float CalcPeso() {
+        return peso*cantidad;
     }
 }
 
@@ -101,7 +105,10 @@ class Articulo{
         descripcion=descripcionn;
         precio=precioo;
     }
-    
+    public float getPeso() {return peso;}
+    public String getNombre() {return nombre;}
+    public String getDescripcion() {return descripcion;}
+    public float getPrecio() {return precio;}
 }
 
 abstract class Pago{
@@ -162,12 +169,12 @@ public class Main {
     Direccion d1=new Direccion("Lord cochrane");
     Cliente c1=new Cliente("vicente","21093975k",d1);
 
-    Articulo cocacola=new Articulo(500,"cocacola","lata de bebida",1000);
+    Articulo cocacola=new Articulo(500,"cocacola","lata de bebida 200ml",1000);
     Articulo papaslays=new Articulo(200,"papas lays","bolsa de papas 200g",1500);
 
     DetalleOrden detalle1=new DetalleOrden(2,cocacola);
 
-
+    System.out.println(detalle1.CalcPeso());
 
     }
     
