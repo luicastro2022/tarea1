@@ -83,7 +83,7 @@ class Articulo{
     private float precio;
 }
 
-class Pago{
+abstract class Pago{
     private float monto;
     private Date fecha;
 
