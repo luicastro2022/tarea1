@@ -17,6 +17,7 @@ class OrdenCompra{
         cliente=clientee;
     }
 
+
     public int calcPrecioSinIVA(){
         return 2;
     }
