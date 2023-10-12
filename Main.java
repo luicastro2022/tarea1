@@ -101,16 +101,20 @@ class Efectivo extends Pago{
 class Transferencia extends Pago{
     private String banco;
     private String numCuenta;
-    public Transferencia(float montoo){
+    public Transferencia(float montoo,String bancoo,String numCuentaa){
         super(montoo);
+        banco=bancoo;
+        numCuenta=numCuentaa;
     }
 
 }
 class Tarjeta extends Pago{
     private String tipo;
     private String numTransaccion;
-    public Tarjeta(float montoo){
+    public Tarjeta(float montoo,String tipoo,String numTransaccionn){
         super(montoo);
+        tipo=tipoo;
+        numTransaccion=numTransaccionn;
     }
 
 }
@@ -139,6 +143,11 @@ public class Main {
     System.out.println(c1.getNombre());
     System.out.println(c1.getRUT());
     System.out.println(c1.getDireccion().getDireccion());
+
+    Tarjeta t1=new Tarjeta(12,"credito","1");
+    Efectivo e1=new Efectivo(12);
+    Transferencia tr1=new Transferencia(12,"BBVA","12");
+
     }
     
 }
