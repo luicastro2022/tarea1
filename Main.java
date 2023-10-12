@@ -67,6 +67,9 @@ class Cliente{
     public Direccion getDireccion() {
         return direccion;
     }
+    public String toString(){
+        return "cliente"+this.nombre+this.RUT+this.direccion.toString();
+    }
 }
 class Direccion{
     private String direccion;
@@ -77,6 +80,9 @@ class Direccion{
 
     public String getDireccion() {
         return direccion;
+    }
+    public String toString(){
+        return "direccion"+this.direccion;
     }
 }
 
