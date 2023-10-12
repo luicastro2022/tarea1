@@ -8,14 +8,17 @@ class OrdenCompra{
     private String estado;
     private Cliente cliente;
 
-    private ArrayList<DocTributario> DocsTributarios;
-    private ArrayList<Cliente> Clientes;
+    private ArrayList<DetalleOrden> detalles;
 
     public OrdenCompra(String estadoo, Cliente clientee){
         estado=estadoo;
         cliente=clientee;
+        detalles=new ArrayList<>();
     }
 
+    public void agregardetalles(DetalleOrden detalleordenn){
+        detalles.add(detalleordenn);
+    }
 
     public int calcPrecioSinIVA(){
         return 2;
@@ -171,8 +174,10 @@ public class Main {
 
     DetalleOrden detalle1=new DetalleOrden(2,cocacola);
 
-    System.out.println(detalle1.CalcPeso());
+    OrdenCompra orden1=new OrdenCompra("pendiente",c1);
 
+    orden1.agregardetalles(detalle1);
+    
     }
     
 }
