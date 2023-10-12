@@ -67,9 +67,6 @@ class DetalleOrden {
         cantidad=cantidadd;
         articulo=articuloo;
         peso=articulo.getPeso();
-
-        precio=articuloo.getPrecio();
-        precioT=cantidad*precio;
     }
     public float CalcIVA() {
         return precioT*19/100;
