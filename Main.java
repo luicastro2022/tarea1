@@ -82,6 +82,13 @@ class Articulo{
     private String nombre;
     private String descripcion;
     private float precio;
+    public Articulo(float pesoo, String nombree, String descripcionn, float precioo){
+        peso=pesoo;
+        nombre=nombree;
+        descripcion=descripcionn;
+        precio=precioo;
+    }
+    
 }
 
 abstract class Pago{
