@@ -142,10 +142,16 @@ abstract class Pago{
     }
 }
 class Efectivo extends Pago{
-    public Efectivo(float montoo){
+    float abono;
+    float monto;
+    public Efectivo(float montoo,float abonoo){
         super(montoo);
+        monto=montoo;
+        abono=abonoo;
     }
-    public float calcDevolucion(){return 0;}
+    public float calcDevolucion(){
+        return abono-monto;
+    }
 }
 class Transferencia extends Pago{
     private String banco;
@@ -201,10 +207,12 @@ public class Main {
     orden1.agregardetalles(detalle1);
     orden1.agregardetalles(detalle2);
 
-    System.out.println(detalle1.CalcPrecioSinIVA());
-    System.out.println(detalle2.CalcPrecioSinIVA());
+    Efectivo pagoorden1=new Efectivo(orden1.calcPrecio(),15000);
+    System.out.println(orden1.calcPrecio());
+    System.out.println(pagoorden1.calcDevolucion());
 
-    System.out.println(orden1.calcPrecioSinIVA());
+
+
     }
     
 }
