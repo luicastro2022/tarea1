@@ -2,7 +2,6 @@ import java.lang.reflect.Array;
 import java.util.Date;
 import java.util.ArrayList;
 
-
 class OrdenCompra{
     private Date fecha;
     private String estado;
@@ -15,17 +14,38 @@ class OrdenCompra{
         cliente=clientee;
         detalles=new ArrayList<>();
     }
-
     public void agregardetalles(DetalleOrden detalleordenn){
         detalles.add(detalleordenn);
     }
 
-    public int calcPrecioSinIVA(){
-        return 2;
+    public float calcPrecioSinIVA(){
+        float aux=0;
+        for(int i=0;i<detalles.size();i++){
+            aux=aux+detalles.get(i).CalcPrecioSinIVA();
+        }
+        return aux;
     }
-    public int calcIVA(){return 2;}
-    public int calcPrecio(){return 2;}
-    public int calcPeso(){return 2;}
+    public float calcIVA(){
+        float aux=0;
+        for(int i=0;i<detalles.size();i++){
+            aux=aux+detalles.get(i).CalcIVA();
+        }
+        return aux;
+    }
+    public float calcPrecio(){
+        float aux=0;
+        for(int i=0;i<detalles.size();i++){
+            aux=aux+detalles.get(i).CalcPrecio();
+        }
+        return aux;
+    }
+    public float calcPeso(){
+        float aux=0;
+        for(int i=0;i< detalles.size();i++){
+            aux=aux+detalles.get(i).CalcPeso();
+        }
+        return aux;
+    }
 
 }
 class Cliente{
@@ -70,6 +90,8 @@ class DetalleOrden {
         cantidad=cantidadd;
         articulo=articuloo;
         peso=articulo.getPeso();
+        precioT=articulo.getPrecio()*cantidad;
+        precio=articuloo.getPrecio();
     }
     public float CalcIVA() {
         return precioT*19/100;
@@ -173,11 +195,16 @@ public class Main {
     Articulo papaslays=new Articulo(200,"papas lays","bolsa de papas 200g",1500);
 
     DetalleOrden detalle1=new DetalleOrden(2,cocacola);
+    DetalleOrden detalle2=new DetalleOrden(5,papaslays);
 
     OrdenCompra orden1=new OrdenCompra("pendiente",c1);
-
     orden1.agregardetalles(detalle1);
-    
+    orden1.agregardetalles(detalle2);
+
+    System.out.println(detalle1.CalcPrecioSinIVA());
+    System.out.println(detalle2.CalcPrecioSinIVA());
+
+    System.out.println(orden1.calcPrecioSinIVA());
     }
     
 }
