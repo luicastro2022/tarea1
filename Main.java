@@ -88,20 +88,30 @@ abstract class Pago{
     private float monto;
     private Date fecha;
 
-    public Pago(){}
+    public Pago(float montoo){
+        monto=montoo;
+    }
 }
 class Efectivo extends Pago{
-    public Efectivo(){}
+    public Efectivo(float montoo){
+        super(montoo);
+    }
     public float calcDevolucion(){return 0;}
 }
 class Transferencia extends Pago{
     private String banco;
     private String numCuenta;
+    public Transferencia(float montoo){
+        super(montoo);
+    }
 
 }
 class Tarjeta extends Pago{
     private String tipo;
     private String numTransaccion;
+    public Tarjeta(float montoo){
+        super(montoo);
+    }
 
 }
 
