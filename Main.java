@@ -59,11 +59,19 @@ class Direccion{
 
 class DetalleOrden {
     private int cantidad;
+<<<<<<< Updated upstream
     private Articulo articulo;
     public DetalleOrden(int cantidadd,Articulo articuloo){
         cantidad=cantidad;
         articulo=articuloo;
     }
+=======
+    private Arraylist<Articulo> Articulos;
+    public DetalleOrden(int cantidadd, Articulo Articulos){
+        cantidad=cantidadd;
+    }
+
+>>>>>>> Stashed changes
     public int CalcPrecio() {
         return 0;
     }
