@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 
 class OrdenCompra{
-
     private Date fecha;
     private String estado;
     private Cliente cliente;
@@ -60,7 +59,11 @@ class Direccion{
 
 class DetalleOrden {
     private int cantidad;
-
+    private Articulo articulo;
+    public DetalleOrden(int cantidadd,Articulo articuloo){
+        cantidad=cantidad;
+        articulo=articuloo;
+    }
     public int CalcPrecio() {
         return 0;
     }
@@ -77,6 +80,16 @@ class DetalleOrden {
         return 0;
     }
 }
+
+class Deposito{
+    private Articulo A;
+    private ArrayList<Articulo> articulos;
+    public Deposito(){articulos=new ArrayList<>();}
+    public void addArticulo(Articulo articulo){
+        articulos.add(articulo);
+    }
+}
+
 class Articulo{
     private float peso;
     private String nombre;
@@ -145,15 +158,16 @@ class Factura extends DocTributario{
 
 public class Main {
     public static void main(String[] args){
+
     Direccion d1=new Direccion("Lord cochrane");
     Cliente c1=new Cliente("vicente","21093975k",d1);
-    System.out.println(c1.getNombre());
-    System.out.println(c1.getRUT());
-    System.out.println(c1.getDireccion().getDireccion());
 
-    Tarjeta t1=new Tarjeta(12,"credito","1");
-    Efectivo e1=new Efectivo(12);
-    Transferencia tr1=new Transferencia(12,"BBVA","12");
+    Articulo cocacola=new Articulo(500,"cocacola","lata de bebida",1000);
+    Articulo papaslays=new Articulo(200,"papas lays","bolsa de papas 200g",1500);
+
+    DetalleOrden detalle1=new DetalleOrden(2,cocacola);
+
+
 
     }
     
