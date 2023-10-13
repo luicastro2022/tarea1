@@ -2,62 +2,74 @@ import java.lang.reflect.Array;
 import java.util.Date;
 import java.util.ArrayList;
 
-class OrdenCompra{
+class OrdenCompra {
     private Date fecha;
     private String estado;
     private Cliente cliente;
-
     private ArrayList<DetalleOrden> detalles;
 
-    public OrdenCompra(String estadoo, Cliente clientee){
-        estado=estadoo;
-        cliente=clientee;
-        detalles=new ArrayList<>();
+
+    public OrdenCompra(String estadoo, Cliente clientee) {
+        estado = estadoo;
+        cliente = clientee;
+        detalles = new ArrayList<>();
     }
-    public void agregardetalles(DetalleOrden detalleordenn){
+    public void agregardetalles(DetalleOrden detalleordenn) {
         detalles.add(detalleordenn);
     }
 
-    public float calcPrecioSinIVA(){
-        float aux=0;
-        for(int i=0;i<detalles.size();i++){
-            aux=aux+detalles.get(i).CalcPrecioSinIVA();
+
+    public float calcPrecioSinIVA() {
+        float aux = 0;
+        for (int i = 0; i < detalles.size(); i++) {
+            aux = aux + detalles.get(i).CalcPrecioSinIVA();
         }
         return aux;
     }
-    public float calcIVA(){
-        float aux=0;
-        for(int i=0;i<detalles.size();i++){
-            aux=aux+detalles.get(i).CalcIVA();
+    public float calcIVA() {
+        float aux = 0;
+        for (int i = 0; i < detalles.size(); i++) {
+            aux = aux + detalles.get(i).CalcIVA();
         }
         return aux;
     }
-    public float calcPrecio(){
-        float aux=0;
-        for(int i=0;i<detalles.size();i++){
-            aux=aux+detalles.get(i).CalcPrecio();
+    public float calcPrecio() {
+        float aux = 0;
+        for (int i = 0; i < detalles.size(); i++) {
+            aux = aux + detalles.get(i).CalcPrecio();
         }
         return aux;
     }
-    public float calcPeso(){
-        float aux=0;
-        for(int i=0;i< detalles.size();i++){
-            aux=aux+detalles.get(i).CalcPeso();
+    public float calcPeso() {
+        float aux = 0;
+        for (int i = 0; i < detalles.size(); i++) {
+            aux = aux + detalles.get(i).CalcPeso();
         }
         return aux;
     }
 
+    public String toString() {
+        return "Orden:" + this.estado + "\n" + this.cliente;
+    }
+    public Date getDate(){return fecha;}
+    public String getEstado(){return estado;}
+    public Cliente getCliente(){return cliente;}
+    public String getdetalles(){
+        return detalles.toString();
+    }
 }
 class Cliente{
     private String nombre;
     private String RUT;
     private Direccion direccion;
     private ArrayList<OrdenCompra> OrdenesDeCompra;
+
     public Cliente(String nombree,String rutt,Direccion direccionn){
         nombre=nombree;
         RUT=rutt;
         direccion=direccionn;
     }
+
     public String getNombre(){
         return nombre;
     }
@@ -67,6 +79,7 @@ class Cliente{
     public Direccion getDireccion() {
         return direccion;
     }
+    public String getOrdenes(){return OrdenesDeCompra.toString();}
     public String toString(){
         return "cliente"+this.nombre+this.RUT+this.direccion.toString();
     }
@@ -78,12 +91,12 @@ class Direccion{
         direccion=direccionn;
     }
 
-    public String getDireccion() {
-        return direccion;
-    }
+    public String getDireccion() {return direccion;}
+    public String getClientes(){return Clientes.toString();}
     public String toString(){
         return "direccion"+this.direccion;
     }
+
 }
 
 class DetalleOrden {
@@ -92,6 +105,7 @@ class DetalleOrden {
     private float precioT;
     private int cantidad;
     private Articulo articulo;
+
     public DetalleOrden(int cantidadd,Articulo articuloo){
         cantidad=cantidadd;
         articulo=articuloo;
@@ -99,6 +113,7 @@ class DetalleOrden {
         precioT=articulo.getPrecio()*cantidad;
         precio=articuloo.getPrecio();
     }
+
     public float CalcIVA() {
         return precioT*19/100;
     }
@@ -111,15 +126,15 @@ class DetalleOrden {
     public float CalcPeso() {
         return peso*cantidad;
     }
-}
 
-class Deposito{
-    private Articulo A;
-    private ArrayList<Articulo> articulos;
-    public Deposito(){articulos=new ArrayList<>();}
-    public void addArticulo(Articulo articulo){
-        articulos.add(articulo);
-    }
+    public float getPeso() {return peso;}
+    public float getPrecio() {return precio;}
+    public float getPrecioT() {return precioT;}
+    public int getCantidad() {return cantidad;}
+    public Articulo getArticulo(){return articulo;}
+
+    public String toString(){return "Detalle Orden:"+this.cantidad+"\n"+this.articulo;}
+
 }
 
 class Articulo{
@@ -127,16 +142,21 @@ class Articulo{
     private String nombre;
     private String descripcion;
     private float precio;
+
     public Articulo(float pesoo, String nombree, String descripcionn, float precioo){
         peso=pesoo;
         nombre=nombree;
         descripcion=descripcionn;
         precio=precioo;
     }
+
     public float getPeso() {return peso;}
     public String getNombre() {return nombre;}
     public String getDescripcion() {return descripcion;}
     public float getPrecio() {return precio;}
+
+    public String toString(){return "Articulo:\n"+this.nombre+"\n"+this.peso+"\n"+this.precio+"\n"+this.descripcion;}
+
 }
 
 abstract class Pago{
@@ -158,18 +178,29 @@ class Efectivo extends Pago{
     public float calcDevolucion(){
         return abono-monto;
     }
+
+    public float getAbono() {return abono;}
+    public float getMonto() {return monto;}
+    public String toString(){return "Pago:\n"+"Deuda: "+this.monto+"\n"+"Abono: "+this.abono;}
 }
 class Transferencia extends Pago{
+    private float monto;
     private String banco;
     private String numCuenta;
     public Transferencia(float montoo,String bancoo,String numCuentaa){
         super(montoo);
+        monto=montoo;
         banco=bancoo;
         numCuenta=numCuentaa;
     }
 
+    public String getBanco() {return banco;}
+    public String getNumCuenta(){return numCuenta;}
+    public String toString(){return "Transeferencia:"+"\n"+"Deuda: "+this.monto+"\n"+"Banco: "+this.banco+"\n"+"Numero de cuenta: "+this.numCuenta;}
+
 }
 class Tarjeta extends Pago{
+    private float monto;
     private String tipo;
     private String numTransaccion;
     public Tarjeta(float montoo,String tipoo,String numTransaccionn){
@@ -178,6 +209,11 @@ class Tarjeta extends Pago{
         numTransaccion=numTransaccionn;
     }
 
+    public float getMonto() {return monto;}
+    public String getTipo() {return tipo;}
+    public String getNumTransaccion() {return numTransaccion;}
+
+    public String toString(){return "Operacion con tarjeta:\n"+"Deuda: "+this.monto+"\n"+"Tipo de tarjeta: "+this.tipo+"\n"+"Numero de transaccion: "+this.numTransaccion;}
 }
 
 
@@ -203,7 +239,7 @@ public class Main {
     Direccion d1=new Direccion("Lord cochrane");
     Cliente c1=new Cliente("vicente","21093975k",d1);
 
-    Articulo cocacola=new Articulo(500,"cocacola","lata de bebida 200ml",1000);
+    Articulo cocacola=new Articulo(400,"cocacola","lata de bebida 400ml",1000);
     Articulo papaslays=new Articulo(200,"papas lays","bolsa de papas 200g",1500);
 
     DetalleOrden detalle1=new DetalleOrden(2,cocacola);
@@ -217,7 +253,7 @@ public class Main {
     System.out.println(orden1.calcPrecio());
     System.out.println(pagoorden1.calcDevolucion());
 
-
+    System.out.println(cocacola.toString());
 
     }
     
