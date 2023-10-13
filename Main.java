@@ -57,6 +57,10 @@ class OrdenCompra {
     public String getdetalles(){
         return detalles.toString();
     }
+
+    public void CrearDoc(){
+
+    }
 }
 class Cliente{
     private String nombre;
