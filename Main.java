@@ -243,15 +243,36 @@ public class Main {
     Direccion d1=new Direccion("Lord cochrane");
     Cliente c1=new Cliente("vicente","21093975k",d1);
 
+    Direccion d2=new Direccion("Barros Arana");
+    Cliente c2=new Cliente("luis","213311107",d2);
+
     Articulo cocacola=new Articulo(400,"cocacola","lata de bebida 400ml",1000);
     Articulo papaslays=new Articulo(200,"papas lays","bolsa de papas 200g",1500);
+    Articulo chokita=new Articulo(30, "chokita", "barra de chocolate 30g", 300);
+    Articulo chicle=new Articulo(10, "chicle", "goma de mascar 10g", 50);
+    Articulo gomitas=new Articulo(100, "gomitas", "gomas dulces 100g", 250);
 
     DetalleOrden detalle1=new DetalleOrden(2,cocacola);
-    DetalleOrden detalle2=new DetalleOrden(5,papaslays);
+    DetalleOrden detalle2=new DetalleOrden(1,papaslays);
+    DetalleOrden detalle3=new DetalleOrden(4,chokita);
+    DetalleOrden detalle4=new DetalleOrden(7,chicle);
+    DetalleOrden detalle5=new DetalleOrden(3,gomitas);
+    DetalleOrden detalle6=new DetalleOrden(1,cocacola);
+    DetalleOrden detalle7=new DetalleOrden(3,papaslays);
+    DetalleOrden detalle8=new DetalleOrden(2,gomitas);
 
     OrdenCompra orden1=new OrdenCompra("pendiente",c1);
     orden1.agregardetalles(detalle1);
     orden1.agregardetalles(detalle2);
+    orden1.agregardetalles(detalle3);
+    orden1.agregardetalles(detalle4);
+    orden1.agregardetalles(detalle5);
+
+    OrdenCompra orden2=new OrdenCompra("pendiente",c2);
+    orden2.agregardetalles(detalle6);
+    orden2.agregardetalles(detalle7);
+    orden2.agregardetalles(detalle8);
+    orden2.agregardetalles(detalle4);
 
     Efectivo pagoorden1=new Efectivo(orden1.calcPrecio(),15000);
     System.out.println(orden1.calcPrecio());
