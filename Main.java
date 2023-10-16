@@ -9,10 +9,11 @@ class OrdenCompra {
     private ArrayList<DetalleOrden> detalles;
 
 
-    public OrdenCompra(String estadoo, Cliente clientee) {
+    public OrdenCompra(String estadoo, Cliente clientee, Date fechaa) {
         estado = estadoo;
         cliente = clientee;
         detalles = new ArrayList<>();
+        fecha=fechaa;
     }
     public void agregardetalles(DetalleOrden detalleordenn) {
         detalles.add(detalleordenn);
@@ -221,21 +222,35 @@ class Tarjeta extends Pago{
 }
 
 
-class DocTributario{
-    private String numero;
-    private String RUT;
-    private Date fecha;
-    private DocTributario docTributario;
+abstract class DocTributario {
+        private String tipo;
+        private String rut;
+        private Date fecha;
+        private String direccion;
 
-    public DocTributario(){}
-}
-class Boleta extends DocTributario{
-    public Boleta(){}
-}
-class Factura extends DocTributario{
-    public Factura(){}
+        public DocTributario(String rutt, Date fechaa, String direccionn) {
+            rut = rutt;
+            fecha = fechaa;
+            direccion = direccionn;
+        }
+        public String getTipo() {
+            return tipo;
+        }
+
+        public String getRut(){return rut;}
+        public Date getFecha(){return fecha;}
+        public String getDireccion(){return direccion;}
 }
 
+class Boleta extends DocTributario {
+    public Boleta(String rut, Date fecha, String direccion) {
+        super(rut, fecha, direccion);
+    }
+}
+class Factura extends DocTributario {
+    public Factura(String rutt, Date fechaa, String direccionn) {
+        super(rutt, fechaa, direccionn);
+    }
 
 public class Main {
     public static void main(String[] args){
@@ -245,6 +260,9 @@ public class Main {
 
     Direccion d2=new Direccion("Barros Arana");
     Cliente c2=new Cliente("luis","213311107",d2);
+
+    Date fechaorden1= new Date(2023-15-10);
+    Date fechaorden2= new Date(2023-17-10);
 
     Articulo cocacola=new Articulo(400,"cocacola","lata de bebida 400ml",1000);
     Articulo papaslays=new Articulo(200,"papas lays","bolsa de papas 200g",1500);
@@ -261,14 +279,14 @@ public class Main {
     DetalleOrden detalle7=new DetalleOrden(3,papaslays);
     DetalleOrden detalle8=new DetalleOrden(2,gomitas);
 
-    OrdenCompra orden1=new OrdenCompra("pendiente",c1);
+    OrdenCompra orden1=new OrdenCompra("pendiente",c1, fechaorden1);
     orden1.agregardetalles(detalle1);
     orden1.agregardetalles(detalle2);
     orden1.agregardetalles(detalle3);
     orden1.agregardetalles(detalle4);
     orden1.agregardetalles(detalle5);
 
-    OrdenCompra orden2=new OrdenCompra("pendiente",c2);
+    OrdenCompra orden2=new OrdenCompra("pendiente",c2, fechaorden2);
     orden2.agregardetalles(detalle6);
     orden2.agregardetalles(detalle7);
     orden2.agregardetalles(detalle8);
