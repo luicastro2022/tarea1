@@ -223,7 +223,6 @@ class Tarjeta extends Pago{
 
 
 abstract class DocTributario {
-        private String tipo;
         private String rut;
         private Date fecha;
         private String direccion;
@@ -233,10 +232,6 @@ abstract class DocTributario {
             fecha = fechaa;
             direccion = direccionn;
         }
-        public String getTipo() {
-            return tipo;
-        }
-
         public String getRut(){return rut;}
         public Date getFecha(){return fecha;}
         public String getDireccion(){return direccion;}
@@ -292,11 +287,10 @@ public class Main {
     orden2.agregardetalles(detalle8);
     orden2.agregardetalles(detalle4);
 
-    Efectivo pagoorden1=new Efectivo(orden1.calcPrecio(),15000);
-    System.out.println(orden1.calcPrecio());
-    System.out.println(pagoorden1.calcDevolucion());
-
-    System.out.println(cocacola.toString());
+    Efectivo pagoorden1=new Efectivo(orden1.calcPrecio(),1000);
+    Efectivo pagoorden1=new Efectivo(orden1.calcPrecio(),500);
+    Tarjeta pagoorden1=new Tarjeta(orden1.calcPrecio(), "Debito", "13225");
+    Transferencia pagoorden2=new Transferencia(orden2.calcPrecio(), "Banco estado", "21331110");
 
     }
     
